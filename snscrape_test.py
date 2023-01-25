@@ -15,14 +15,16 @@ def sentiment(search, max_results):
     sliced_scraped_tweets = itertools.islice(scraped_tweets, max_results)
 
     # convert to a DataFrame and keep only relevant columns
-    #df = pd.DataFrame(sliced_scraped_tweets)[['date', 'rawContent']]
-    df = pd.DataFrame(sliced_scraped_tweets)['rawContent']
+    df = pd.DataFrame(sliced_scraped_tweets)[['date', 'rawContent']]
+    #df = pd.DataFrame(sliced_scraped_tweets)['rawContent']
 
     analyzer = SentimentIntensityAnalyzer()
 
     scores = []
-    for sentence in df:
-        vs = analyzer.polarity_scores(sentence)
+    for text in df['rawContent']:
+        vs = analyzer.polarity_scores(text)
         scores.append(vs['compound'])
-        
-    return scores
+     
+    df['com_score'] = scores
+    
+    return df
