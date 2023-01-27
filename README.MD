@@ -15,6 +15,6 @@ I have the following steps to take whenever i start coding. Is this a CI-CD flow
 
 > md DB_data
 
-> mongod.exe --dbpath="C:\Users\ATVQ\OneDrive - Novo Nordisk\Desktop\Twitter_sentiment\Twitter_sentiment\DB_data"
+> mongod.exe --dbpath="C:\Users\ATVQ\OneDrive - Novo Nordisk\Desktop\New folder\Twitter_sentiment\DB_data"
 
 > bokeh serve --show no_flask_main.py

@@ -7,7 +7,19 @@ import pandas as pd
 p = figure(height=350, width=1500, x_axis_type="datetime")
 
 df = sn.sentiment("brøndby if", 100)
+###########
+import pymongo
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+dblist = myclient.list_database_names()
+mydb = myclient["mydatabase"]
+mycol = mydb["records"]
+x = mycol.insert_many(df.to_dict(orient='records'))
+# for x in mycol.find():
+    # print(x)
+# mycol.delete_many({'name': 'Peter'})
 
+    
+################
 # becomes a pandas series type
 #df = df.groupby(df.date.dt.day)['com_score'].mean()
 df = df.groupby(df.date.dt.to_period('D'))['com_score'].mean()
