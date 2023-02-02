@@ -15,8 +15,6 @@ First start the mongoDB server:
 
 Now open another CMD instance from this folder and start the bokeh server:
 
-> start cmd
-
 > python -m venv env
 
 > .\env\scripts\activate
